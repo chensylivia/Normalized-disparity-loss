@@ -1,0 +1,49 @@
+
+DATA:
+  train_data_root: 
+  train_left_list: 
+  train_right_list:
+  train_disp_list:  
+
+  test_data_root: 
+  test_left_list:
+  test_right_list: 
+  test_disp_list: 
+
+TRAIN:
+  SF: True
+  maxdisp: 192
+  train_h: 256 
+  train_w: 512
+  ignore_disp_label: 0
+  train_gpu: [0,1,2,3]
+  workers: 4  
+  batch_size: 8 
+  epochs: 10
+  start_epoch: 0
+  manual_seed: 1
+  print_freq: 10
+  save_freq: 1
+  save_path: exp/SF/PSMNet/model
+  weight: 
+  # path to initial weight (default: none)
+  resume: 
+  # path to latest checkpoint (default: none)
+  
+DISTRIBUTED:
+  dist_url: tcp://127.0.0.1:6788
+  dist_backend: 'nccl'
+  multiprocessing_distributed: True
+  world_size: 1
+  rank: 0
+  use_apex: True
+  opt_level: 'O0'
+  keep_batchnorm_fp32:
+  loss_scale:
+
+TEST:
+  evaluate: True
+  test_gpu: [0]
+  batch_size_test: 1 
+  test_h: 544
+  test_w: 960
